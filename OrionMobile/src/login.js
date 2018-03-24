@@ -17,7 +17,8 @@ const MOCK_DATA = {
         "aidID": 2,
         "description": "Do you own a car?",
         "qaID": 6,
-        "qAnswers": "Yes"
+        "qAnswers": "Yes",
+        "image": ""
     },
     {
         "qID": 3,
@@ -39,7 +40,8 @@ const MOCK_DATA = {
         "description": "are you cool?",
         "qaID": 9,
         "qAnswers": "No"
-    }]
+    }
+  ]
 }
 export default class Login extends Component {
   constructor(props){
