@@ -44,7 +44,7 @@ export default class Login extends Component {
     //   console.error(error);
     // });
     this.setState({loading:false});
-    this.props.navigation.navigate('TimeCheck', {data: MOCK_DATA});
+    this.props.navigation.navigate('OrionForm', {data: MOCK_DATA});
   }
 
   render() {
