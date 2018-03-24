@@ -15,12 +15,18 @@ export default class OrionForm extends Component {
     gesturesEnabled: false
   };
 
+  genForm(){
+    this.setState({timeCheckModal:false});
+  }
+
   render() {
     return (
       <View>
         <Modal isVisible={this.state.timeCheckModal}>
           <View style={styles.modalContent}>
-            <TimeCheck/>
+            <TimeCheck
+            {...this.props.navigation.state.params.data}
+            completeSurvey={() => {this.genForm()}}/>
           </View>
         </Modal>
       </View>
@@ -34,8 +40,8 @@ const styles = {
    padding: 20,
    justifyContent: "center",
    alignItems: "center",
-   borderRadius: 4,
+   borderRadius:32,
    borderColor: "rgba(0, 0, 0, 0.1)",
-   height: 300,
+   height: 400,
  },
 }

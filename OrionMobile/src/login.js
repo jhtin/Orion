@@ -4,7 +4,42 @@ import { Image } from 'react-native';
 
 const LOGIN_URL = 'https://mywebsite.com/endpoint/';
 const MOCK_DATA = {
-  timeInterval: "something here",
+    "userID": 2,
+    "Name": "Grace",
+    "email": "test",
+    "ngoName": "United Nations Development Programme",
+    "aidID": 2,
+    "aidName": "help rich ppl",
+    "aidDescription": "first world problems",
+    "form": [
+    {
+        "qID": 3,
+        "aidID": 2,
+        "description": "Do you own a car?",
+        "qaID": 6,
+        "qAnswers": "Yes"
+    },
+    {
+        "qID": 3,
+        "aidID": 2,
+        "description": "Do you own a car?",
+        "qaID": 7,
+        "qAnswers": "No"
+    },
+    {
+        "qID": 4,
+        "aidID": 2,
+        "description": "are you cool?",
+        "qaID": 8,
+        "qAnswers": "Yes"
+    },
+    {
+        "qID": 4,
+        "aidID": 2,
+        "description": "are you cool?",
+        "qaID": 9,
+        "qAnswers": "No"
+    }]
 }
 export default class Login extends Component {
   constructor(props){
