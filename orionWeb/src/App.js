@@ -57,10 +57,8 @@ class App extends Component {
           {this.generateBreadcrumbs()}
           </Breadcrumb>
           <Divider/>
-          <Grid>
-            <Grid.Row stretched container columns={2}>
+          <Grid divided='vertically'>
             {this.generateProgramCards()}
-            </Grid.Row>
           </Grid>
 
           </Segment>
@@ -75,7 +73,8 @@ class App extends Component {
     var cards = [];
     for (var i = 0; i < this.state.programs.length; i++){
       cards.push(
-      <Grid.Column>
+              <Grid.Row>
+      <Grid.Column width={3}>
           <Card internalPosition='left'>
             <Image src={this.state.programs[i].imgSrc}/>
             <Card.Content>
@@ -93,9 +92,12 @@ class App extends Component {
           </a>
           </Card.Content>
         </Card>
-      <Divider/>
       </Grid.Column>
-      
+      <Grid.Column width={3}>
+      <Graph/>
+      </Grid.Column>
+      <Divider/>
+      </Grid.Row>
       )
     }
   return cards;
