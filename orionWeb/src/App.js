@@ -33,11 +33,11 @@ class App extends Component {
       id: 3,
       name: "Community Banking Program",
       imgSrc: "./program4.jpg",
-      description: "Supporting access to finance as well as strengthening of local institutions supporting employment services, vocational training and rural entrepreneurship.",
+      description: "Supporting access to finance as well as strengthening of local institutions supporting employment services and entrepreneurship.",
       noParticipants: 283
     }
     ],
-    breadcrumbs: ["Main", "Program"],
+    breadcrumbs: ["United Nations Development Programme", "Current Programs"],
     showDetails: false,
   }
   toggleVisibility = () => this.setState({ sidevisible: !this.state.sidevisible })
@@ -104,8 +104,8 @@ class App extends Component {
               </Card.Content>
             </Card>
           </Grid.Column>
-          <Grid.Column>
-          <Card style={{width: "70%"}}>
+          <Grid.Column style={{marginLeft: "-125px"}}>
+          <Card style={{width: "70%"}} onClick={() => console.log("something")}>
             <Image src={this.state.programs[1].imgSrc} />
             <Card.Content>
               <Card.Header>
@@ -126,7 +126,7 @@ class App extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-          <Card style={{width: "70%"}}>
+          <Card style={{width: "70%"}} onClick={() => console.log("something")}>
             <Image src={this.state.programs[2].imgSrc} />
             <Card.Content>
               <Card.Header>
@@ -144,8 +144,8 @@ class App extends Component {
             </Card.Content>
           </Card>
           </Grid.Column>
-          <Grid.Column>
-          <Card style={{width: "70%"}}>
+          <Grid.Column style={{marginLeft: "-125px"}} >
+          <Card style={{width: "70%"}} onClick={() => console.log("something")}>
             <Image src={this.state.programs[3].imgSrc} />
             <Card.Content>
               <Card.Header>
@@ -212,7 +212,7 @@ class App extends Component {
       <Breadcrumb.Divider icon='right angle' />
       );
       bc.push(
-        <Breadcrumb.Section link>{this.state.breadcrumbs[i]}</Breadcrumb.Section>
+        <Breadcrumb.Section active>{this.state.breadcrumbs[i]}</Breadcrumb.Section>
       );
     }
 

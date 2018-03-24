@@ -55,3 +55,8 @@
   padding-right: 10px;
   /* float: right; */
 }
+
+#root > div > div > div.pusher > div > div.ui.vertically.divided.grid {
+  background: #446CB3;
+  border-radius: 16px;
+}
