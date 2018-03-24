@@ -1,4 +1,5 @@
 import React, { Component, StyleSheet } from 'react';
+import { Alert } from 'react-native';
 import {View, Container, Content, Form, Item, Input, Button, Text, Body, Label, Spinner,
 ListItem, CheckBox, Icon, Right, Badge } from 'native-base';
 import Modal from "react-native-modal";
@@ -26,7 +27,10 @@ export default class OrionForm extends Component {
     let formData = this.props.navigation.state.params.data.form;
     let formState = {};
     for(let i=0; i < formData.length; i++){
-      formState[formData[i].qID] = formData[i].qAnswers;
+      formState[formData[i].qID] = {
+        qAnswers: formData[i].qAnswers,
+        qaID: formData[i].qaID,
+      };
     }
     console.log("init formstate:", formState);
     this.setState({formState:formState});
@@ -37,7 +41,7 @@ export default class OrionForm extends Component {
     console.log("setForm:", qid, qAnswers)
     let formData = Object.assign({}, this.state.formState );
     console.log(formData);
-    formData[qid] = qAnswers;
+    formData[qid].qAnswers = qAnswers;
     console.log(formData);
     this.setState({formState: formData, updateForm: true});
   }
@@ -53,7 +57,7 @@ export default class OrionForm extends Component {
         listItem.push(
           <ListItem key={i} style={styles.listItem}>
             <CheckBox onPress={() => {this.setForm(formData[i].qID, formData[i].qAnswers)}}
-            checked={this.state.formState[formData[i].qID] == formData[i].qAnswers}/>
+            checked={this.state.formState[formData[i].qID].qAnswers == formData[i].qAnswers}/>
             <Body>
               <Text>{formData[i].qAnswers}</Text>
             </Body>
@@ -93,7 +97,7 @@ export default class OrionForm extends Component {
     for(let key in this.state.formState){
       formPost.push({
         "qID": key,
-        "qaID": this.state.formState[key]
+        "qaID": this.state.formState[key].qaID,
       })
     }
     console.log("form post:", formPost)
@@ -119,6 +123,7 @@ export default class OrionForm extends Component {
      .then((response) => response.json())
      .then((responseJson) => {
        this.setState({loading:false});
+       Alert.alert("Survey Completed!");
        console.log(responseJson)
      })
      .catch((error) => {
