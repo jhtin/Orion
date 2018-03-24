@@ -2,7 +2,6 @@ import React, { Component, StyleSheet } from 'react';
 import {View, Container, Content, Form, Item, Input, Button, Text, Body, Label, Spinner } from 'native-base';
 import { Image } from 'react-native';
 
-const LOGIN_URL = 'https://mywebsite.com/endpoint/';
 const MOCK_DATA = {
     "userID": 2,
     "Name": "Grace",
@@ -61,27 +60,28 @@ export default class Login extends Component {
     console.log("login")
     console.log("password:", this.state.username)
     console.log("password:", this.state.password)
-    // fetch(LOGIN_URL, {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     username: this.state.username,
-    //     password: this.state.password,
-    //   }),
-    // })
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   this.setState({loading:false});
-    //   this.props.navigation.navigate('TimeCheck', {data: responseJson});
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
-    this.setState({loading:false});
-    this.props.navigation.navigate('OrionForm', {data: MOCK_DATA});
+    fetch("https://dbd562db.ngrok.io/login", {
+      method: 'POST',
+      headers: {
+       Accept: 'application/json',
+       'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+       Name: this.state.username,
+       password: this.state.password,
+      }),
+     })
+     .then((response) => response.json())
+     .then((responseJson) => {
+       this.setState({loading:false});
+       console.log(responseJson)
+       this.props.navigation.navigate('OrionForm', {data: responseJson});
+     })
+     .catch((error) => {
+       console.error(error);
+     });
+    // this.setState({loading:false});
+    // this.props.navigation.navigate('OrionForm', {data: MOCK_DATA});
   }
 
   render() {

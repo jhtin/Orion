@@ -1,8 +1,9 @@
 import React, { Component, StyleSheet } from 'react';
 import {View, Container, Content, Form, Item, Input, Button, Text, Body, Label, Spinner,
-ListItem, CheckBox } from 'native-base';
+ListItem, CheckBox, Icon, Right, Badge } from 'native-base';
 import Modal from "react-native-modal";
 import TimeCheck from './timeCheck';
+import Tts from 'react-native-tts';
 
 export default class OrionForm extends Component {
   constructor(props){
@@ -30,6 +31,7 @@ export default class OrionForm extends Component {
   }
 
   setForm(qid, qAnswers){
+    this.questionToSpeech(qAnswers);
     console.log("setForm:", qid, qAnswers)
     let formData = Object.assign({}, this.state.formState );
     console.log(formData);
@@ -42,23 +44,30 @@ export default class OrionForm extends Component {
     this.setState({timeCheckModal:false});
     let formData = this.props.navigation.state.params.data.form;
     let listItem = [];
-    let current_qID = formData[0].qID;
+    let current_qID = "";
 
     for(let i=0; i < formData.length; i++){
-      // if (formData[i].qID == current_qID){
-        // current_qID = formData[i].qID;
-
+      if (formData[i].qID == current_qID){
         listItem.push(
-          <ListItem key={i}>
+          <ListItem key={i} style={styles.listItem}>
             <CheckBox onPress={() => {this.setForm(formData[i].qID, formData[i].qAnswers)}}
             checked={this.state.formState[formData[i].qID] == formData[i].qAnswers}/>
             <Body>
-              <Text>{formData[i].description}</Text>
+              <Text>{formData[i].qAnswers}</Text>
             </Body>
           </ListItem>
         )
-        console.log(formData[i].description)
-      // }
+      }else{
+        let description = formData[i].description
+        listItem.push(
+          <Button block iconLeft rounded small info style={styles.button} key={i.toString()+"-lable"}
+          onPress = {() => {this.questionToSpeech(description)}}>
+            <Icon style={{paddingTop: 5, paddingBottom: 5, color: 'white'}} name="md-mic"/>
+            <Text style={{paddingTop: 5, paddingBottom: 5, color: 'white'}}>{description}</Text>
+          </Button>);
+        current_qID = formData[i].qID;
+        i--;
+      }
     }
     let genForm = (
       <Content>
@@ -66,6 +75,15 @@ export default class OrionForm extends Component {
       </Content>
     );
     this.setState({genForm: genForm});
+  }
+
+  questionToSpeech(string){
+    Tts.stop();
+    Tts.addEventListener('tts-start', (event) => console.log("start", event));
+    Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
+    Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
+    Tts.setDefaultRate(0.4);
+    Tts.speak(string, { iosVoiceId: 'com.apple.ttsbundle.Daniel-compact'});
   }
 
   componentDidMount(){
@@ -107,4 +125,17 @@ const styles = {
    borderColor: "rgba(0, 0, 0, 0.1)",
    height: 400,
  },
+ listItem: {
+   paddingBottom: 10,
+   paddingTop: 10,
+ },
+ button: {
+   marginBottom: 10,
+   marginTop: 10,
+   // fontWeight: 'bold',
+   marginLeft: 5,
+   marginRight: 5,
+   paddingBottom: 30,
+   paddingTop: 30,
+ }
 }

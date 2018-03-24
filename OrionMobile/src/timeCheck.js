@@ -17,7 +17,10 @@ export default class TimeCheck extends Component {
   };
 
   speech(){
-    let speech = "Hello this is the " + this.props.ngoName + ". You are about to fill out a survery for " + this.props['aidName'] + "."
+    let speech = "Hello this is the " + this.props.ngoName + ". You are about to fill out a survery for " + this.props['aidName'] + ".";
+    Tts.addEventListener('tts-start', (event) => console.log("start", event));
+    Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
+    Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     Tts.setDefaultRate(0.4);
     Tts.speak(speech, { iosVoiceId: 'com.apple.ttsbundle.Daniel-compact'});
   }
