@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Menu, Segment } from 'semantic-ui-react';
 import ProgramOver  from './ProgramOver';
-import ProgramParticpants  from './ProgramParticipants';
+import ProgramPartSwitch from './ProgramPartSwitch';
 import ProgramData  from './ProgramData';
 
 
@@ -19,7 +19,7 @@ export default class ProgramView extends React.Component {
     var lookup =  
     {
       Overview: <ProgramOver/>,
-      Participants: <ProgramParticpants/>,
+      Participants: <ProgramPartSwitch/>,
       Data: <ProgramData/>
     };
 
