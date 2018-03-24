@@ -36,3 +36,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.leaflet-container {
+  min-height: 200px;
+  min-width: 200px;
+}
