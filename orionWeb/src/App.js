@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Grid, Divider, Breadcrumb, Sidebar, Button, Card, Icon, Image, Segment, Menu } from 'semantic-ui-react';
+import { Grid, Divider, Breadcrumb, Sidebar, Button, Card, Icon, Image, Segment, Menu, Label } from 'semantic-ui-react';
 import Graph from './Graph';
 
 
@@ -87,7 +87,8 @@ class App extends Component {
         <Grid.Row>
           <Grid.Column>
             <Card style={{width: "70%"}} onClick={() => (this.setState({showDetails:true}))}>
-              <Image src={this.state.programs[0].imgSrc} />
+              <Image fluid
+              label={{ as: 'a', corner: 'left', icon: 'exclamation', color: "red" }} src={this.state.programs[0].imgSrc} />
               <Card.Content>
                 <Card.Header>
                   {this.state.programs[0].name}
@@ -106,7 +107,8 @@ class App extends Component {
           </Grid.Column>
           <Grid.Column style={{marginLeft: "-125px"}}>
           <Card style={{width: "70%"}} onClick={() => console.log("something")}>
-            <Image src={this.state.programs[1].imgSrc} />
+            <Image fluid
+            label={{ as: 'a', corner: 'left', icon: 'check', color: "green" }} src={this.state.programs[1].imgSrc} />
             <Card.Content>
               <Card.Header>
                 {this.state.programs[1].name}
@@ -127,7 +129,8 @@ class App extends Component {
         <Grid.Row>
           <Grid.Column>
           <Card style={{width: "70%"}} onClick={() => console.log("something")}>
-            <Image src={this.state.programs[2].imgSrc} />
+            <Image fluid
+            label={{ as: 'a', corner: 'left', icon: 'check', color: "green" }} src={this.state.programs[2].imgSrc} />
             <Card.Content>
               <Card.Header>
                 {this.state.programs[2].name}
@@ -146,7 +149,8 @@ class App extends Component {
           </Grid.Column>
           <Grid.Column style={{marginLeft: "-125px"}} >
           <Card style={{width: "70%"}} onClick={() => console.log("something")}>
-            <Image src={this.state.programs[3].imgSrc} />
+            <Image fluid
+            label={{ as: 'a', corner: 'left', icon: 'check', color: "green" }} src={this.state.programs[3].imgSrc} />
             <Card.Content>
               <Card.Header>
                 {this.state.programs[3].name}
