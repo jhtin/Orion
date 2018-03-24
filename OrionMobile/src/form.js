@@ -4,6 +4,7 @@ ListItem, CheckBox, Icon, Right, Badge } from 'native-base';
 import Modal from "react-native-modal";
 import TimeCheck from './timeCheck';
 import Tts from 'react-native-tts';
+import moment from 'moment';
 
 export default class OrionForm extends Component {
   constructor(props){
@@ -13,6 +14,7 @@ export default class OrionForm extends Component {
       genForm: null,
       formState: {},
       updateForm: false,
+      loading: false,
     }
   }
   static navigationOptions = {
@@ -86,6 +88,45 @@ export default class OrionForm extends Component {
     Tts.speak(string, { iosVoiceId: 'com.apple.ttsbundle.Daniel-compact'});
   }
 
+  genPostForm(){
+    let formPost = []
+    for(let key in this.state.formState){
+      formPost.push({
+        "qID": key,
+        "qaID": this.state.formState[key]
+      })
+    }
+    console.log("form post:", formPost)
+    return formPost
+  }
+
+  submitSurvey(){
+    this.setState({loading:true});
+    let form = this.genPostForm();
+    console.log("User id:", this.props.navigation.state.params.data.userID)
+    fetch("https://dbd562db.ngrok.io/form", {
+      method: 'POST',
+      headers: {
+       Accept: 'application/json',
+       'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+       userID: this.props.navigation.state.params.data.userID,
+       form: form,
+       time: moment().format('DD_MM_YY'),
+      }),
+     })
+     .then((response) => response.json())
+     .then((responseJson) => {
+       this.setState({loading:false});
+       console.log(responseJson)
+     })
+     .catch((error) => {
+       this.setState({loading:false});
+       console.error(error);
+     });
+  }
+
   componentDidMount(){
     this.genFormData();
   }
@@ -103,6 +144,16 @@ export default class OrionForm extends Component {
         <Content style={{marginTop: 20}}>
           {this.state.genForm}
         </Content>
+        {this.state.loading ?
+          <View>
+            <Spinner color='blue' />
+          </View> :
+          <View style={{marginTop: 30, marginBottom: 30}}>
+            <Button style={styles.submitButton} iconLeft rounded onPress={() => {this.submitSurvey()}}>
+              <Icon name="md-checkbox"/>
+              <Text>Submit Survey</Text>
+            </Button>
+          </View>}
       <Modal isVisible={this.state.timeCheckModal}>
         <View style={styles.modalContent}>
           <TimeCheck
@@ -137,5 +188,9 @@ const styles = {
    marginRight: 5,
    paddingBottom: 30,
    paddingTop: 30,
+ },
+ submitButton:{
+   // marginBottom: 30,
+   alignSelf:'center'
  }
 }

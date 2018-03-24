@@ -2,46 +2,6 @@ import React, { Component, StyleSheet } from 'react';
 import {View, Container, Content, Form, Item, Input, Button, Text, Body, Label, Spinner } from 'native-base';
 import { Image } from 'react-native';
 
-const MOCK_DATA = {
-    "userID": 2,
-    "Name": "Grace",
-    "email": "test",
-    "ngoName": "United Nations Development Programme",
-    "aidID": 2,
-    "aidName": "help rich ppl",
-    "aidDescription": "first world problems",
-    "form": [
-    {
-        "qID": 3,
-        "aidID": 2,
-        "description": "Do you own a car?",
-        "qaID": 6,
-        "qAnswers": "Yes",
-        "image": ""
-    },
-    {
-        "qID": 3,
-        "aidID": 2,
-        "description": "Do you own a car?",
-        "qaID": 7,
-        "qAnswers": "No"
-    },
-    {
-        "qID": 4,
-        "aidID": 2,
-        "description": "are you cool?",
-        "qaID": 8,
-        "qAnswers": "Yes"
-    },
-    {
-        "qID": 4,
-        "aidID": 2,
-        "description": "are you cool?",
-        "qaID": 9,
-        "qAnswers": "No"
-    }
-  ]
-}
 export default class Login extends Component {
   constructor(props){
     super(props);
