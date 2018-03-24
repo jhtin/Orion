@@ -10,17 +10,17 @@ class App extends Component {
   state = { sidevisible: false,
     programs: [{
       id: 1,
-      name: "Local Governance Program",
-      imgSrc: "./program1.jpg",
-      description: "Enhancing the capacities of local governments and the civil society so that they can bring the services to the people efficiently; involving citizens more actively in the governance process.",
-      noParticipants: 350
-    },
-    {
-      id: 2,
       name: "Human Development Initiatives",
       imgSrc: "./program2.jpg",
       description: "Addressed basic needs of poor communities by supporting sustainable livelihoods, improving access to social services, small village infrastructure, water and sanitation and HIV/AIDS prevention.",
       noParticipants: 423
+    },
+    {
+      id: 2,
+      name: "Local Governance Program",
+      imgSrc: "./program1.jpg",
+      description: "Enhancing the capacities of local governments and the civil society so that they can bring the services to the people efficiently; involving citizens more actively in the governance process.",
+      noParticipants: 350
     },
     {
       id: 3,
