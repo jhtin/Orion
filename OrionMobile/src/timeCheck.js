@@ -32,8 +32,6 @@ export default class TimeCheck extends Component {
           <Image resizeMode="contain" style={styles.logo} source={require('./images/ngo_logo.gif')} />
           <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{this.props.ngoName}</Text></Text>
           <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>Aid Programme:</Text> {this.props['aidName']}</Text>
-          <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>Description:</Text> {this.props['aidDescription']}</Text>
-          <Text style={styles.text}>Opened on Saturday 23rd of March!</Text>
         </View>
         <View style={styles.timeCheckGenForm}>
           <Body>
