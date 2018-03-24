@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Divider, Breadcrumb, Sidebar, Button, Card, Icon, Image, Segment, Menu, Label } from 'semantic-ui-react';
-import Graph from './Graph';
+import ProgramView from './ProgramView';
 
 
 
@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.showDetails ?
-        <div>TEST NAV</div>:
+        <div><ProgramView/></div>:
         <Sidebar.Pushable as={Segment}>
         <Sidebar as={Menu} animation='push' width='wide' visible={this.state.sidevisible} icon='labeled' vertical inverted>
           <Menu.Item name='home'  onClick={this.handleItemClick} >
@@ -223,12 +223,9 @@ class App extends Component {
     return bc;
   }
 
-  generateChart() {
-    return (
-      <Graph/>
-    );
 
-  }
+
+  
 }
 
 
