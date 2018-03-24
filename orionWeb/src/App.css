@@ -1,5 +1,15 @@
 .App {
-  text-align: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.Content {
+  display: flex;
+  flex-flow: column;
+  background-color: #2868C6 !important;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -25,4 +35,33 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.program-grid {
+  justify-content: center;
+}
+
+.card {
+  margin-left: 150px !important;
+}
+
+#navbarorion {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+#navbarorion {
+  display: inline-block;
+  padding-right: 10px;
+  /* float: right; */
+}
+
+#root > div > div > div.pusher > div > div.ui.vertically.divided.grid {
+  background: #446CB3;
+  border-radius: 16px;
+}
+
+.leaflet-container {
+  min-height: 200px;
+  min-width: 200px;
 }
