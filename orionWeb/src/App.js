@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Divider, Breadcrumb, Sidebar, Button, Card, Icon, Image, Segment, Menu } from 'semantic-ui-react';
-var Chart = require('react-d3-core').Chart;
-var LineChart = require('react-d3-basic').LineChart;
+
 
 
 class App extends Component {
@@ -76,7 +75,6 @@ class App extends Component {
     for (var i = 0; i < this.state.programs.length; i++){
       cards.push(
       <Grid.Column>
-      <Segment>
           <Card internalPosition='left'>
             <Image src={this.state.programs[i].imgSrc}/>
             <Card.Content>
@@ -94,7 +92,8 @@ class App extends Component {
           </a>
           </Card.Content>
         </Card>
-      </Segment>
+        {this.generateChart()}
+      <Divider/>
       </Grid.Column>
       
       )
@@ -114,6 +113,63 @@ class App extends Component {
     }
     
     return bc;
+  }
+
+  generateChart() {
+    var LineChart = require('react-d3-basic').LineChart;
+
+    var data = [{
+          "sale": "202",
+          "year": "2000"
+      }, {
+          "sale": "215",
+          "year": "2001"
+      }, {
+          "sale": "179",
+          "year": "2002"
+      }, {
+          "sale": "199",
+          "year": "2003"
+      }, {
+          "sale": "134",
+          "year": "2003"
+      }, {
+          "sale": "176",
+          "year": "2010"
+      }];
+      var width = 500,
+      height = 300,
+      margins = {left: 100, right: 100, top: 50, bottom: 50},
+      // chart series,
+      // field: is what field your data want to be selected
+      // name: the name of the field that display in legend
+      // color: what color is the line
+      chartSeries = [
+        {
+          field: 'total',
+          name: 'Total',
+          color: '#ff7f0e'
+        }
+      ],
+      // your x accessor
+      x = function(d) {
+        return d.year;
+      },
+      xScale = 'time';
+  
+  
+    return(
+      <LineChart
+      margins= {margins}
+      data={data}
+      width={width}
+      height={height}
+      chartSeries={chartSeries}
+      x={x}
+      xScale={xScale}
+    />
+    );
+    
   }
 }
 
