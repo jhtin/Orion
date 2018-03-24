@@ -3,9 +3,9 @@ import { Icon, Card, Container, Grid, Header, Divider } from 'semantic-ui-react'
 import ProgramOverFeed from './ProgramOverFeed';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-class ProgramOver extends React.Component {
+class ProgramProfile extends React.Component {
   state = {
-    programname: "Local Governance Program"
+    programname: "Profile"
   }
   render() {
     return (
@@ -52,6 +52,6 @@ class ProgramOver extends React.Component {
   }
 }
 
-export default ProgramOver;
+export default ProgramProfile;
 
 //ReactDOM.render(<CustomTheme/>, mountNode)

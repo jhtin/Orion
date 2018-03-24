@@ -60,3 +60,8 @@
   background: #446CB3;
   border-radius: 16px;
 }
+
+.leaflet-container {
+  min-height: 200px;
+  min-width: 200px;
+}
