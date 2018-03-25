@@ -14,7 +14,8 @@ class ProfileGraph extends React.Component {
       super(props);
       this.state = {
         data: [{x: 0, y: 1}],
-        history: []
+        history: [],
+        offSet: 1,
       };
     }
 
@@ -47,9 +48,10 @@ class ProfileGraph extends React.Component {
                 for (var i=0; i < history.length; i++) {
                   dataSet.push({x: i, y: history[i].sum});
                 }
+                // console.log("offset",this.state.offSet)
                 this.setState({
                   history: history,
-                  data: dataSet
+                  data: dataSet,
                 })
 
               }
