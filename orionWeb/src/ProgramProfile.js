@@ -64,7 +64,7 @@ class ProgramProfile extends React.Component {
         </Grid.Column>
         <Grid.Column width={10}>
           <Grid.Row style={{maringTop:10}}>
-          <Header as='h3'>Data Feed</Header>
+          <Header as='h3'>Progress Out of Poverty</Header>
           <Divider/>
           <ProfileGraph/>
           </Grid.Row>

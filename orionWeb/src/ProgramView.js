@@ -10,13 +10,13 @@ export default class ProgramView extends React.Component {
 
   handleItemClick = (e, { name }) => {
     var page = this.getPage(name);
-    this.setState({ 
+    this.setState({
       activeItem: name,
       curPage: page
      });}
 
   getPage(name) {
-    var lookup =  
+    var lookup =
     {
       Overview: <ProgramOver/>,
       Participants: <ProgramPartSwitch/>,
@@ -35,7 +35,6 @@ export default class ProgramView extends React.Component {
           <Menu fluid vertical tabular>
             <Menu.Item name='Overview' active={activeItem === 'Overview'} onClick={this.handleItemClick} />
             <Menu.Item name='Participants' active={activeItem === 'Participants'} onClick={this.handleItemClick} />
-            <Menu.Item name='Data' active={activeItem === 'Data'} onClick={this.handleItemClick} />
           </Menu>
         </Grid.Column>
 
