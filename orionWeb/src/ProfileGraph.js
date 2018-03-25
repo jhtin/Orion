@@ -12,28 +12,70 @@ class ProfileGraph extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        data: [{x: 0, y: 1}]
+        data: [{x: 0, y: 1}],
+        history: []
       };
     }
   
     componentDidMount() {
-      this.setStateInterval = window.setInterval(() => {
-        this.setState({
-          data: this.getData()
-        });
-      }, 3000);
+    }
+
+    componentWillMount() {
+      fetch('http://dbd562db.ngrok.io/history?userID=24')
+          .then(data => data.json())
+          .then((data) => { 
+              // get json data and extract the first lat and lng component
+              console.log(data);
+
+              var user = data.details;
+              var history = data.history;
+              
+              var dataSet = [];
+              //this.refs.map.getLeafletElement().
+              if (this.state.history.length < history.length) {
+                for (var i=0; i < history.length; i++) {
+                  dataSet.push({x: i, y: history[i].sum});
+                }
+                this.setState({
+                  history: history,
+                  data: dataSet
+                })
+
+              }
+            });
+
+      /*
+      this.interval = setInterval(
+          () => 
+          fetch('http://dbd562db.ngrok.io/history?userID=24')
+          .then(data => data.json())
+          .then((data) => { 
+              // get json data and extract the first lat and lng component
+              console.log(data);
+
+              var user = data.details;
+              var history = data.history;
+              var dataSet = [];
+              //this.refs.map.getLeafletElement().
+              if (this.state.history.length < history.length) {
+                for (var i=0; i < history.length; i++) {
+                  dataSet.push({x: i, y: history[i].sum});
+                }
+                this.setState({
+                  history: history,
+                  data: dataSet
+                })
+
+              }
+ 
+
+          }), 1000000); 
+          //this.setState({lat: 51.4826, lng: 0});
+          */
     }
   
     componentWillUnmount() {
       window.clearInterval(this.setStateInterval);
-    }
-  
-    getData() {
-      const bars = 10;
-      var data = this.state.data;
-      data.push({x: this.state.data.length, y: Math.random(2, 10)});
-      
-      return data ;
     }
   
     render() {
@@ -47,14 +89,14 @@ class ProfileGraph extends React.Component {
           <VictoryBar
             data={this.state.data}
             style={{
-              data: { fill: "tomato", width: 12 }
+              data: { fill: "blue", width: 12 }
             }}
             animate={{
               onExit: {
                 duration: 500,
                 before: () => ({
                   _y: 0,
-                  fill: "orange",
+                  fill: "blue",
                   label: "BYE"
                 })
               }
