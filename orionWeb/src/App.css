@@ -65,3 +65,7 @@
   min-height: 200px;
   min-width: 200px;
 }
+
+#root > div > div > div > div > div.twelve.wide.column > div > div > div > div:nth-child(3) > div.ten.wide.column > div > div:nth-child(3){
+  margin-top: -50px;
+}

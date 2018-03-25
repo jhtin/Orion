@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <link rel="stylesheet" href="./React App_files/semantic.min.css">
+    <link rel="stylesheet" href="./React App_files/leaflet.css">
+
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+</style><style type="text/css">.App {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.Content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column;
+      flex-flow: column;
+  background-color: #2868C6 !important;
+  height: 100%;
+  width: 100%;
+}
+
+.App-logo {
+  -webkit-animation: App-logo-spin infinite 20s linear;
+          animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@keyframes App-logo-spin {
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+.program-grid {
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+.card {
+  margin-left: 150px !important;
+}
+
+#navbarorion {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+#navbarorion {
+  display: inline-block;
+  padding-right: 10px;
+  /* float: right; */
+}
+
+#root > div > div > div.pusher > div > div.ui.vertically.divided.grid {
+  background: #446CB3;
+  border-radius: 16px;
+}
+
+.leaflet-container {
+  min-height: 200px;
+  min-width: 200px;
+}
+
+#root > div > div > div > div > div.twelve.wide.column > div > div > div > div:nth-child(3) > div.ten.wide.column > div > div:nth-child(3){
+  margin-top: -50px;
+}
+</style></head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"><div class="App"><div class="ui segment pushable"><div class="ui inverted vertical labeled icon ui push left wide sidebar menu"><div class="item"><i aria-hidden="true" class="home icon"></i>Home</div><div class="item"><i aria-hidden="true" class="envelope icon"></i>Messages</div><div class="item"><i aria-hidden="true" class="user icon"></i>Contacts</div></div><div class="pusher"><div class="ui basic segment"><div><img id="navbarorion" src="./React App_files/ngo_logo.gif" class="ui small image"><div class="ui big breadcrumb"><a class="section">United Nations Development Programme</a><i aria-hidden="true" class="right angle icon divider"></i><div class="active section">Current Programs</div></div><img src="./React App_files/orionLogo.png" class="ui small image" style="float: right;"></div><div class="ui divider"></div><div class="ui vertically divided grid"><div class="ui two column grid"><div class="row"><div class="column"><a class="ui card" style="width: 70%;"><div class="ui fluid image"><a class="ui red left corner label"><i aria-hidden="true" class="exclamation icon"></i></a><img src="./React App_files/program2.jpg"></div><div class="content"><div class="header">Human Development Initiatives</div><div class="description">Addressed basic needs of poor communities by supporting sustainable livelihoods, improving access to social services, small village infrastructure, water and sanitation and HIV/AIDS prevention.</div></div><div class="extra content"><a><i aria-hidden="true" class="user icon"></i>423 Participants</a></div></a></div><div class="column" style="margin-left: -125px;"><a class="ui card" style="width: 70%;"><div class="ui fluid image"><a class="ui green left corner label"><i aria-hidden="true" class="check icon"></i></a><img src="./React App_files/program1.jpg"></div><div class="content"><div class="header">Local Governance Program</div><div class="description">Enhancing the capacities of local governments and the civil society so that they can bring the services to the people efficiently; involving citizens more actively in the governance process.</div></div><div class="extra content"><a><i aria-hidden="true" class="user icon"></i>350 Participants</a></div></a></div></div><div class="row"><div class="column"><a class="ui card" style="width: 70%;"><div class="ui fluid image"><a class="ui green left corner label"><i aria-hidden="true" class="check icon"></i></a><img src="./React App_files/program3.jpg"></div><div class="content"><div class="header">Area Development Program</div><div class="description">Each ADP focuses on a distinct geographical area and partners local stakeholders to improve the well-being of children.</div></div><div class="extra content"><a><i aria-hidden="true" class="user icon"></i>234 Participants</a></div></a></div><div class="column" style="margin-left: -125px;"><a class="ui card" style="width: 70%;"><div class="ui fluid image"><a class="ui green left corner label"><i aria-hidden="true" class="check icon"></i></a><img src="./React App_files/program4.jpg"></div><div class="content"><div class="header">Community Banking Program</div><div class="description">Supporting access to finance as well as strengthening of local institutions supporting employment services and entrepreneurship.</div></div><div class="extra content"><a><i aria-hidden="true" class="user icon"></i>283 Participants</a></div></a></div></div></div></div></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script type="text/javascript" src="./React App_files/bundle.js"></script>
+
+</body></html>
