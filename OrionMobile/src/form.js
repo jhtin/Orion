@@ -16,6 +16,7 @@ export default class OrionForm extends Component {
       formState: {},
       updateForm: false,
       loading: false,
+      dayOffset: 0,
     }
   }
   static navigationOptions = {
@@ -117,12 +118,13 @@ export default class OrionForm extends Component {
       body: JSON.stringify({
        userID: this.props.navigation.state.params.data.userID,
        form: form,
-       time: moment().format('DD_MM_YYYY HH:MM'),
+       time: moment().add(this.state.dayOffset, 'days').format('DD_MM_YYYY HH:MM'),
       }),
      })
      .then((response) => response.json())
      .then((responseJson) => {
-       this.setState({loading:false});
+       console.log("offset,", this.state.dayOffset)
+       this.setState({loading:false, dayOffset: this.state.dayOffset+1});
        Alert.alert("Survey Completed!");
        console.log(responseJson)
      })
