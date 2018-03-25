@@ -89,7 +89,7 @@ export default class OrionForm extends Component {
     Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
     Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     Tts.setDefaultRate(0.4);
-    Tts.speak(string, { iosVoiceId: 'com.apple.ttsbundle.Daniel-compact'});
+    Tts.speak(string, { iosVoiceId: 'com.apple.ttsbundle.Samantha-compact'});
   }
 
   genPostForm(){
@@ -117,7 +117,7 @@ export default class OrionForm extends Component {
       body: JSON.stringify({
        userID: this.props.navigation.state.params.data.userID,
        form: form,
-       time: moment().format('DD_MM_YY'),
+       time: moment().format('DD_MM_YYYY HH:MM'),
       }),
      })
      .then((response) => response.json())

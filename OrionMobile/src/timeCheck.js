@@ -17,12 +17,12 @@ export default class TimeCheck extends Component {
   };
 
   speech(){
-    let speech = "Hello this is the " + this.props.ngoName + ". You are about to fill out a survery for " + this.props['aidName'] + ".";
+    let speech = "Hello this is the " + this.props.ngoName + ". You are about to fill out a survey for " + this.props['aidName'] + ".";
     Tts.addEventListener('tts-start', (event) => console.log("start", event));
     Tts.addEventListener('tts-finish', (event) => console.log("finish", event));
     Tts.addEventListener('tts-cancel', (event) => console.log("cancel", event));
     Tts.setDefaultRate(0.4);
-    Tts.speak(speech, { iosVoiceId: 'com.apple.ttsbundle.Daniel-compact'});
+    Tts.speak(speech, { iosVoiceId: 'com.apple.ttsbundle.Samantha-compact', quality:500});
   }
 
   render() {
@@ -31,7 +31,7 @@ export default class TimeCheck extends Component {
         <View style= {styles.timeCheckContent}>
           <Image resizeMode="contain" style={styles.logo} source={require('./images/ngo_logo.gif')} />
           <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{this.props.ngoName}</Text></Text>
-          <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>Aid Programme:</Text> {this.props['aidName']}</Text>
+          <Text style={styles.text}> {this.props['aidName']}</Text>
         </View>
         <View style={styles.timeCheckGenForm}>
           <Body>
