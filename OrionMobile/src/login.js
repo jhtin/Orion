@@ -35,7 +35,9 @@ export default class Login extends Component {
      .then((responseJson) => {
        this.setState({loading:false});
        console.log(responseJson)
-       this.props.navigation.navigate('OrionForm', {data: responseJson});
+       if(responseJson != '403'){
+         this.props.navigation.navigate('OrionForm', {data: responseJson});
+       }
      })
      .catch((error) => {
        console.error(error);
