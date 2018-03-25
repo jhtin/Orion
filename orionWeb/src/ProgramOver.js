@@ -3,6 +3,7 @@ import { Icon, Card, Container, Grid, Header, Divider, Image } from 'semantic-ui
 import ProgramOverFeed from './ProgramOverFeed';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { VictoryPie, VictoryAnimation, VictoryLabel } from 'victory';
+import randomLocation from 'random-location';
 
 class ProgramOver extends React.Component {
   state = {
@@ -29,6 +30,22 @@ class ProgramOver extends React.Component {
   getData(percent) {
     return [{ x: 1, y: percent }, { x: 2, y: 100 - percent }];
   }
+  genPoints(){
+    const P = {
+      latitude: 21.323072,
+      longitude: 97.165481
+    }
+    const R = 200000
+    let points = []
+    for (let i = 0; i<100; i++){
+      let randomPoint = randomLocation.randomCirclePoint(P, R)
+      points.push(<Marker position={[randomPoint.latitude, randomPoint.longitude]}>
+        <Popup>
+        </Popup>
+      </Marker>)
+    }
+    return points
+  }
   render() {
     return (
       <Container>
@@ -41,22 +58,39 @@ class ProgramOver extends React.Component {
 
         <Grid.Row>
           <Grid.Column width={6}>
-          <Header as='h3'>Participant distribution</Header>
+          <Header as='h3'>Aid Participant Distribution</Header>
           <Divider/>
-          <Map refs='map' center={[0,100]} zoom={6} >
+          <Map refs='map' center={[21.323072, 97.165481]} zoom={6} style={{height: 600}}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           />
+          {this.genPoints()}
           </Map>
 
         </Grid.Column>
         <Grid.Column width={10}>
+          <Grid.Row>
+          <Header as='h3'>Project Co-ordinator</Header>
+          <Divider/>
+          <Card style={{height: "10%"}}>
+            <Image  src={'./matthew.png'} />
+            <Card.Content>
+              <Card.Header>
+                Matthew
+              </Card.Header>
+              <Card.Description>
+                Matthew@UNDP.com
+              </Card.Description>
+            </Card.Content>
+          </Card>
+          </Grid.Row>
+          <Grid.Row style={{maringTop:10}}>
           <Header as='h3'>Data Feed</Header>
           <Divider/>
           <ProgramOverFeed/>
+          </Grid.Row>
         </Grid.Column>
-
         </Grid.Row>
         <Divider/>
         <Grid.Row>
